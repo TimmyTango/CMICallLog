@@ -1,0 +1,1 @@
+insert into settings(`key`, `value`) values ('dbVersion', '1.2.0.2')

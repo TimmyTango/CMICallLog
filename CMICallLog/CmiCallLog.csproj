@@ -1,0 +1,289 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{CF05DB92-D61F-4A99-A7BF-5C8E665EC190}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CMICallLog</RootNamespace>
+    <AssemblyName>CMICallLog</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>I:\CmiCallLog\publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>true</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <UpdateUrl>\\192.168.100.243\operations\IS\CmiCallLog\publish\</UpdateUrl>
+    <ProductName>CMI Call Log</ProductName>
+    <PublisherName>Tim Hamilton</PublisherName>
+    <ApplicationRevision>2</ApplicationRevision>
+    <ApplicationVersion>1.2.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>false</SignManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>F1F135E1A708CA3A8232AFF6711EA9CD40CB4CC6</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>CmiCallLog_TemporaryKey.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>false</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>CMI Logo.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <TargetZone>LocalIntranet</TargetZone>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="ClosedXML">
+      <HintPath>..\ClosedXML.dll</HintPath>
+    </Reference>
+    <Reference Include="DocumentFormat.OpenXml">
+      <HintPath>..\DocumentFormat.OpenXml.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net">
+      <HintPath>..\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.SQLite, Version=1.0.92.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\System.Data.SQLite.dll</HintPath>
+    </Reference>
+    <Reference Include="System.DirectoryServices.AccountManagement" />
+    <Reference Include="System.IO.Compression" />
+    <Reference Include="System.IO.Compression.FileSystem" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ChooseDbLocation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ChooseDbLocation.Designer.cs">
+      <DependentUpon>ChooseDbLocation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Constants.cs" />
+    <Compile Include="CreateIncidentForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CreateIncidentForm.Designer.cs">
+      <DependentUpon>CreateIncidentForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CreateUpdateForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CreateUpdateForm.Designer.cs">
+      <DependentUpon>CreateUpdateForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Database.cs" />
+    <Compile Include="EmailSender.cs" />
+    <Compile Include="EmailSettings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EmailSettings.Designer.cs">
+      <DependentUpon>EmailSettings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Filters.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Filters.Designer.cs">
+      <DependentUpon>Filters.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Incident.cs" />
+    <Compile Include="IncidentDetail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="IncidentDetail.Designer.cs">
+      <DependentUpon>IncidentDetail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="IncidentDetailControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="IncidentDetailControl.Designer.cs">
+      <DependentUpon>IncidentDetailControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LiveCallDetail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LiveCallDetail.Designer.cs">
+      <DependentUpon>LiveCallDetail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewMainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NewMainForm.Designer.cs">
+      <DependentUpon>NewMainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="DBUpdater.cs" />
+    <Compile Include="SetStoreManagers.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SetStoreManagers.Designer.cs">
+      <DependentUpon>SetStoreManagers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Update.cs" />
+    <Compile Include="UpdateDetailsControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UpdateDetailsControl.Designer.cs">
+      <DependentUpon>UpdateDetailsControl.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="ChooseDbLocation.resx">
+      <DependentUpon>ChooseDbLocation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CreateIncidentForm.resx">
+      <DependentUpon>CreateIncidentForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CreateUpdateForm.resx">
+      <DependentUpon>CreateUpdateForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EmailSettings.resx">
+      <DependentUpon>EmailSettings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Filters.resx">
+      <DependentUpon>Filters.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="IncidentDetail.resx">
+      <DependentUpon>IncidentDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="IncidentDetailControl.resx">
+      <DependentUpon>IncidentDetailControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LiveCallDetail.resx">
+      <DependentUpon>LiveCallDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NewMainForm.resx">
+      <DependentUpon>NewMainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="SetStoreManagers.resx">
+      <DependentUpon>SetStoreManagers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UpdateDetailsControl.resx">
+      <DependentUpon>UpdateDetailsControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="CmiCallLog_TemporaryKey.pfx" />
+    <None Include="Properties\app.manifest" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.5">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.5 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.4.5">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 4.5</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="CMI Logo.ico" />
+    <Content Include="license.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="worm.ico" />
+    <Content Include="x64\SQLite.Interop.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="x86\SQLite.Interop.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Updater\Updater.csproj">
+      <Project>{1c9d997b-e12c-4af0-9154-816f3b0a61cf}</Project>
+      <Name>Updater</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Properties\DataSources\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

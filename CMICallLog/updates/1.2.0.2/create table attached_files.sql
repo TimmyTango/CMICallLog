@@ -1,0 +1,5 @@
+CREATE TABLE `attached_files` (
+	`id`	INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+	`ticketNumber`	INTEGER NOT NULL,
+	`filePath`	TEXT NOT NULL
+);
