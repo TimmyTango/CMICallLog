@@ -45,8 +45,15 @@ namespace CMICallLog
             msg.Subject = subject;
 
             client.Credentials = new System.Net.NetworkCredential(email["emailUser"], email["emailPassword"]);
-
-            client.SendAsync(msg, "TestEmail");
+            
+            try
+            {
+                client.SendAsync(msg, "TestEmail");
+            }
+            catch (Exception e)
+            {
+                Program.Log.Error(e.ToString());
+            }
         }
 
         public static void SendUpdateEmail(Database db, Update update)
@@ -78,8 +85,15 @@ namespace CMICallLog
             msg.Subject = subject;
 
             client.Credentials = new System.Net.NetworkCredential(email["emailUser"], email["emailPassword"]);
-
-            client.SendAsync(msg, "TestEmail");
+            
+            try
+            {
+                client.SendAsync(msg, "TestEmail");
+            }
+            catch (Exception e)
+            {
+                Program.Log.Error(e.ToString());
+            }
         }
     }
 }
