@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Net.Mail;
 using System.Text;
@@ -20,6 +21,19 @@ namespace CMICallLog
             To = to;
             Subject = subject;
             Message = message;
+        }
+
+        public static void SendCallback(object sender, AsyncCompletedEventArgs e)
+        {
+            if(e.Cancelled)
+            {
+                Program.Log.Error("Email send cancelled");
+            }
+
+            if(e.Error != null)
+            {
+                Program.Log.Error("Email send error: " + e.Error.ToString());
+            }
         }
 
         public static void SendIncidentEmail(Database db, Incident inc)
@@ -45,6 +59,8 @@ namespace CMICallLog
             msg.Subject = subject;
 
             client.Credentials = new System.Net.NetworkCredential(email["emailUser"], email["emailPassword"]);
+
+            client.SendCompleted += new SendCompletedEventHandler(SendCallback);
             
             try
             {
@@ -85,7 +101,9 @@ namespace CMICallLog
             msg.Subject = subject;
 
             client.Credentials = new System.Net.NetworkCredential(email["emailUser"], email["emailPassword"]);
-            
+
+            client.SendCompleted += new SendCompletedEventHandler(SendCallback);
+
             try
             {
                 client.SendAsync(msg, "TestEmail");
