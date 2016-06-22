@@ -41,8 +41,7 @@ namespace CMICallLog
             }
             catch(SQLiteException e)
             {
-                System.Windows.Forms.MessageBox.Show("Could not open database: " + e.ToString());
-                Program.ExitApp();
+                Core.Log.Error("Could not open database: " + e.ToString());
             }
         }
 
@@ -593,13 +592,6 @@ namespace CMICallLog
                 stores.Add(reader["storeNumber"].ToString());
             }
             return stores.ToArray();
-        }
-
-        public SQLiteDataReader ReportQuery(string sql)
-        {
-            SQLiteCommand com = new SQLiteCommand(sql, this.db);
-            SQLiteDataReader reader = com.ExecuteReader();
-            return reader;
         }
     }
 }

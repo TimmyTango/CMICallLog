@@ -9,12 +9,18 @@ using System.Windows.Forms;
 
 namespace CMICallLog
 {
-    class EmailSender
+    public class EmailSender
     {
         public string To { get; set; }
         public string Subject { get; set; }
         public string Message { get; set; }
 
+        public EmailSender()
+        {
+            To = "";
+            Subject = "";
+            Message = "";
+        }
 
         public EmailSender(string to, string subject, string message)
         {
@@ -107,6 +113,34 @@ namespace CMICallLog
             try
             {
                 client.SendAsync(msg, "TestEmail");
+            }
+            catch (Exception e)
+            {
+                Program.Log.Error(e.ToString());
+            }
+        }
+
+        public void SendReport(Database db, string to, string subject, string message)
+        {
+            if (to == "")
+                return;
+
+            Dictionary<string, string> email = db.GetEmailSettings();            
+
+            SmtpClient client = new SmtpClient(email["emailHost"]);
+
+            MailMessage msg = new MailMessage(email["emailFrom"], to);
+            msg.Body = message;
+            msg.Subject = subject;
+            msg.IsBodyHtml = true;
+
+            client.Credentials = new System.Net.NetworkCredential(email["emailUser"], email["emailPassword"]);
+
+            client.SendCompleted += new SendCompletedEventHandler(SendCallback);
+            
+            try
+            {
+                client.Send(msg);
             }
             catch (Exception e)
             {
