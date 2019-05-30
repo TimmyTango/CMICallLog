@@ -1,0 +1,1 @@
+This was my first large project. It's a C#/.NET Forms app to track and manage issues for a company I used to work for. It replaced a cumbersome system of spreadsheets and made it easier to manage issues. I learned a lot about how NOT to manage a larger piece of software by building this. Please don't use it to learn anything 😁.
